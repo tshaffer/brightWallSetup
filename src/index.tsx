@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 
 import { photoCollageModelReducer } from './model';
 import PhotoCollage from './component/PhotoCollage';
+import App from './component/App';
 
 import {
   getPlatform,
@@ -14,29 +15,29 @@ import {
 } from './config';
 import { init } from './controller';
 
-const platform = getPlatform();
+// const platform = getPlatform();
 
-if (platform === 'BrightSign') {
-  readConfig('/storage/sd/config.env');
-} else {
-  readConfig('/Users/tedshaffer/Documents/Projects/brightWallSetup/src/config/config.env');
-}
+// if (platform === 'BrightSign') {
+//   readConfig('/storage/sd/config.env');
+// } else {
+//   readConfig('/Users/tedshaffer/Documents/Projects/brightWallSetup/src/config/config.env');
+// }
 
 const store = createStore(
   photoCollageModelReducer,
   composeWithDevTools(applyMiddleware(thunk)),
 );
 
-store.dispatch(init());
+// store.dispatch(init());
 
-const divStyle = {
-  height: '1080px',
-};
+// const divStyle = {
+//   height: '1080px',
+// };
 
 ReactDOM.render(
   <Provider store={store}>
-    <div style={divStyle}>
-      <PhotoCollage />
+    <div>
+      <App />
     </div>
   </Provider>,
   document.getElementById('content') as HTMLElement
